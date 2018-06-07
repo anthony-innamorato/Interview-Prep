@@ -36,7 +36,7 @@ def bstCount(root):
     else:
         return 1 + bstCount(root.left) + bstCount(root.right)
 
-#a little dumb
+#a little dumb, improved below
 """def minMax(root):
     if root.left is None and root.right is None:
         return root.data, root.data

@@ -1,11 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Jun  4 17:08:23 2018
-
-@author: Tony Innamorato
-"""
-
-
 #question 1
 def f(x):
     if (x >= 12):
@@ -62,41 +54,3 @@ def S(n, k):
         return 1
     return S(n - 1, k-1) + k * S(n - 1, k)
 print(S(5,3))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
