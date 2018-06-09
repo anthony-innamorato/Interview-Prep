@@ -117,6 +117,15 @@ def printIterator(iter):
         string += str(elem) + " "
     print(string)
 
+def leavesList(root):
+    if root is None:
+        return []
+    else:
+        prevLeavesLst = leavesList(root.left) + leavesList(root.right)
+        if root.left == None and root.right == None:
+            prevLeavesLst.append(root.data)
+        return prevLeavesLst
+
 
 print("=============EXAMPLE A=============")
 a = Node(70)
@@ -164,6 +173,9 @@ print()
 print("TESTING ISBALANCED")
 print(isBalanced(a)[0])
 
+print("TESTING LEAVES LST")
+print(leavesList(a))
+
 for i in range(2):
     print()
 
@@ -206,3 +218,6 @@ print()
 
 print("TESTING ISBALANCED")
 print(isBalanced(b)[0])
+
+print("TESTING LEAVES LST")
+print(leavesList(b))
