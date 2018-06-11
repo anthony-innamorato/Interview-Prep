@@ -126,6 +126,69 @@ def leavesList(root):
             prevLeavesLst.append(root.data)
         return prevLeavesLst
 
+def findNode(root, data):
+    if root == None:
+        return None
+    elif root.data == data:
+        return root
+    else:
+        left = findNode(root.left, data)
+        right = findNode(root.right, data)
+        if left != None:
+            return left
+        else:
+            return right
+
+#because python does not support by reference passing on of variables,
+#to get deleting to work I would have to wrap all nodes on a collection
+#in order to modify by reference. Correct implementation is viewable in
+#c++ implementation of bst, basic algo is detailed here for convience sake however
+def disconnectFromParent(root, node):
+    if root == None:
+        return
+    if root.left == node:
+        root.left = None
+    elif root.right == node:
+        root.right = None
+    else:
+        disconnectFromParent(root.left, node)
+        disconnectFromParent(root.right, node)
+
+def findMaxNode(root):
+    if root.right == None:
+        return root
+    else:
+        return findMaxNode(root.right)
+
+def findMinNode(root):
+    if root.left == None:
+        return root
+    else:
+        return findMinNode(root.left)
+
+def delNodeFromTree(root, data):
+    nodeToBeDeleted = findNode(root, data)
+    if nodeToBeDeleted == None:
+        return False
+    if nodeToBeDeleted.left == None and nodeToBeDeleted.right == None:
+        disconnectFromParent(root, nodeToBeDeleted)
+        return True
+    elif nodeToBeDeleted.left != None:
+        maxNode = findMaxNode(nodeToBeDeleted.left)
+        nodeToBeDeleted.data, maxNode.data = maxNode.data, nodeToBeDeleted.data
+        disconnectFromParent(root, maxNode)
+        return True
+    else:
+        minNode = findMinNode(nodeToBeDeleted.right)
+        nodeToBeDeleted.data, minNode.data = minNode.data, nodeToBeDeleted.data
+        disconnectFromParent(root, minNode)
+        return True
+
+def deleteNode(root, data):
+    if delNodeFromTree(root, data):
+        print("Node: " + str(data) + " succesfully deleted")
+    else:
+        print("Node: " + str(data) + " not found in tree")
 
 print("=============EXAMPLE A=============")
 a = Node(70)
@@ -221,3 +284,5 @@ print(isBalanced(b)[0])
 
 print("TESTING LEAVES LST")
 print(leavesList(b))
+print()
+print()
