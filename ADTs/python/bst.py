@@ -143,6 +143,7 @@ def findNode(root, data):
 #to get deleting to work I would have to wrap all nodes on a collection
 #in order to modify by reference. Correct implementation is viewable in
 #c++ implementation of bst, basic algo is detailed here for convience sake however
+"""
 def disconnectFromParent(root, node):
     if root == None:
         return
@@ -189,6 +190,7 @@ def deleteNode(root, data):
         print("Node: " + str(data) + " succesfully deleted")
     else:
         print("Node: " + str(data) + " not found in tree")
+"""
 
 print("=============EXAMPLE A=============")
 a = Node(70)
