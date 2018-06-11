@@ -143,6 +143,10 @@ def findNode(root, data):
 #to get deleting to work I would have to wrap all nodes on a collection
 #in order to modify by reference. Correct implementation is viewable in
 #c++ implementation of bst, basic algo is detailed here for convience sake however
+
+#way to get around this would be to store a unique ID to each node
+#and store each object in a hash table so match the copie's ID to the object
+#in the hash tables ID could lead to directly modyfying the object
 """
 def disconnectFromParent(root, node):
     if root == None:
